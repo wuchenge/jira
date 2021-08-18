@@ -1,3 +1,5 @@
+import { useCallback, useEffect } from "react";
+
 export const cleanObject = (object) => {
   const result = { ...object };
   Object.keys(object).forEach((key) => {
@@ -10,3 +12,9 @@ export const cleanObject = (object) => {
 };
 
 export const isFalsy = (value) => (value === 0 ? false : !value);
+
+export const useMount = (callback) => {
+  useEffect(() => {
+    callback();
+  }, []);
+};

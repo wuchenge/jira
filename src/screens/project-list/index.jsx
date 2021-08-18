@@ -1,8 +1,8 @@
 import { List } from "./list"
 import { SearchPanel } from "./search-panel"
 import { useEffect, useState } from "react"
-import { cleanObject } from "utils/index";
-import * as qs  from "qs"
+import { cleanObject, useMount } from "utils/index";
+import qs from "qs";
 
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -15,7 +15,7 @@ export const ProjectListScreen = () => {
     const [users, setUsers] = useState([])
     const [list, setList] = useState([])
 
-    useEffect(() => {
+    useMount(() => {
         let url = `${apiUrl}/projects?${qs.stringify(cleanObject(param))}`
         fetch(url).then(async response => {
             if(response.ok) {
@@ -24,7 +24,7 @@ export const ProjectListScreen = () => {
         })
     }, [param])
 
-    useEffect(() => {
+    useMount(() => {
         let url = `${apiUrl}/users`
         fetch(url).then(async response => {
             if(response.ok) {
