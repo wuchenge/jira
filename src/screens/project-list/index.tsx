@@ -10,18 +10,18 @@ export const ProjectListScreen = () => {
     personId: "",
   });
 
-  const debouncedParam = useDebounce(param, 2000);
+  const debouncedParam = useDebounce(param, 1000);
   const client = useHttp();
   const [users, setUsers] = useState([]);
   const [list, setList] = useState([]);
 
   useEffect(() => {
     client("projects", { data: cleanObject(debouncedParam) }).then(setList);
-  }, [debouncedParam]);
+  }, [debouncedParam]); // eslint-disable-line
 
   useEffect(() => {
     client("users").then(setUsers);
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <div>
