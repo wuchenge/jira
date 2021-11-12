@@ -67,6 +67,20 @@ export const useDocumentTitle = (
   }, [keepOnUnmount, oldTitle]);
 };
 
+/** 传入一个对象/集合 返回对应的对象中的键值对 */
+export const subset = <
+  O extends { [key in string]: unknown },
+  K extends keyof O
+>(
+  obj: O,
+  keys: K[]
+) => {
+  const filterdEntries = Object.entries(obj).filter(([key]) =>
+    keys.includes(key as K)
+  );
+  return Object.fromEntries(filterdEntries) as Pick<O, K>;
+};
+
 export const resetRoute = () => {
   window.location.href = window.location.origin;
 };
