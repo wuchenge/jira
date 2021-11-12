@@ -38,7 +38,7 @@ export const useProjectModal = () => {
     setEditingProjectId({ editingProjectId: id });
 
   return {
-    projectOpen: projectCreate === "true" || Boolean(editingProject),
+    projectOpen: projectCreate === "true" || Boolean(editingProjectId),
     open,
     close,
     startEdit,
