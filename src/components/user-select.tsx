@@ -1,4 +1,3 @@
-import React from "react";
 import { useUsers } from "utils/user";
 import { IdSelect } from "./id-select";
 
