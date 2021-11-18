@@ -1,5 +1,5 @@
-import { Link, Routes, Route, Navigate } from "react-router-dom";
-import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
+import { useLocation, Routes, Route, Navigate } from "react-router";
 import { KanbanScreen } from "screens/kanban";
 import { EpicScreen } from "screens/epic";
 import styled from "@emotion/styled";
@@ -26,9 +26,11 @@ export const ProjectScreen = () => {
       </Aside>
       <Main>
         <Routes>
+          {/*projects/:projectId/kanban*/}
           <Route path={"/kanban"} element={<KanbanScreen />}></Route>
+          {/*projects/:projectId/epic*/}
           <Route path={"/epic"} element={<EpicScreen />}></Route>
-          <Navigate to={"kanban"} replace={true} />
+          <Navigate to={window.location.pathname + "/kanban"} replace={true} />
         </Routes>
       </Main>
     </Container>
@@ -43,6 +45,7 @@ const Aside = styled.aside`
 const Main = styled.div`
   box-shadow: -5px 0 5px -5px rgba(0, 0, 0, 0.1);
   display: flex;
+  overflow: hidden;
 `;
 
 const Container = styled.div`
